@@ -1,0 +1,7 @@
+<VStack :if={not is_nil(@caught_pokemon) > 0}>
+    <VStack :if={not is_nil(@caught_pokemon) > 0}>
+        <AsyncImage class="" url={@caught_pokemon.sprite} />
+        <Text><%= @caught_pokemon.name %></Text>
+    </VStack>
+    <Button phx-click="catch_em">Catch 'em</Button>
+</VStack>
