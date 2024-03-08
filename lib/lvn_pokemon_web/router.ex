@@ -2,10 +2,14 @@ defmodule LvnPokemonWeb.Router do
   use LvnPokemonWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "swiftui"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {LvnPokemonWeb.Layouts, :root}
+
+    plug :put_root_layout,
+      html: {LvnPokemonWeb.Layouts, :root},
+      swiftui: {LvnPokemonWeb.Layouts.SwiftUI, :root}
+
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -17,7 +21,7 @@ defmodule LvnPokemonWeb.Router do
   scope "/", LvnPokemonWeb do
     pipe_through :browser
 
-    live "/", HomeLive.Index, :index
+    live "/", HomeLive, :index
   end
 
   # Other scopes may use custom stacks.

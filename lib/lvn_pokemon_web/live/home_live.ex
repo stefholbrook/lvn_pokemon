@@ -1,5 +1,11 @@
-defmodule LvnPokemonWeb.HomeLive.Index do
+defmodule LvnPokemonWeb.HomeLive do
   use LvnPokemonWeb, :live_view
+
+  use LiveViewNative.LiveView,
+    formats: [:swiftui],
+    layouts: [
+      swiftui: {LvnPokemonWeb.Layouts.SwiftUI, :app}
+    ]
 
   alias LvnPokemon.Pokemon
 
